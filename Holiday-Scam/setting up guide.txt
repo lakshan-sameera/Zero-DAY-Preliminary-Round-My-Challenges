@@ -1,0 +1,39 @@
+setting up guide
+
+use the files in the Test folder 
+
+
+
+
+`docker copose build --no-cache`
+
+
+docker compose up -d
+
+
+
+docker run -d --name ctf-web -p 80:80 test-scam-web
+
+
+
+check site is working propo=erly
+
+
+				curl and check it should similar to this
+				curl -I localhost
+
+				HTTP/1.1 200 OK
+				Server: nginx
+				Date: Tue, 20 Jan 2026 06:32:42 GMT
+				Content-Type: text/html
+				Content-Length: 8732
+				Last-Modified: Tue, 20 Jan 2026 05:44:33 GMT
+				Connection: keep-alive
+				ETag: "696f1641-221c"
+				X-Content-Type-Options: nosniff
+				X-Frame-Options: DENY
+				Referrer-Policy: no-referrer
+				Accept-Ranges: bytes
+
+
+

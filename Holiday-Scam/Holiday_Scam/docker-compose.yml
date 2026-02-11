@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  holiday-scam:
+    build: .
+    container_name: holiday-scam
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true

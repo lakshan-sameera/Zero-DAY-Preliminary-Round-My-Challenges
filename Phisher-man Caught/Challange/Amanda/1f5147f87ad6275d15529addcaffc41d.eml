@@ -1,0 +1,58 @@
+Sender: "no-reply@crypto-safe.example" <no-reply@crypto-safe.example>
+From: "no-reply@crypto-safe.example" <no-reply@crypto-safe.example>
+Subject: Transaction Failed: Insufficient Balance
+To: "amanda@webtech-finance.com" <amanda@webtech-finance.com>
+Cc: 
+Bcc: 
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="--_=_NextPart1_44961a2a-d20e-43e7-8bce-609597a364c5"
+
+This is a multi-part message in MIME format.
+
+----_=_NextPart1_44961a2a-d20e-43e7-8bce-609597a364c5
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear Customer,
+
+We attempted to process your recent cryptocurrency transaction, but it coul=
+d not be completed=2E
+
+Transaction details:
+Attempted amount: =C2=A32,500=2E00 GBP
+Conversion type: GBP to Bitcoin (BTC)
+Status: Failed
+Reason: Insufficient account balance
+
+No funds have been deducted from your account as a result of this failed tr=
+ansaction=2E
+
+If you believe this attempt was made in error or do not recognize this acti=
+vity, please contact customer support through the official help center=2E
+
+This is an automated message=2E Please do not reply to this email=2E
+
+Regards,
+Crypto Exchange Notifications
+no-reply@crypto-safe=2Eexample
+
+----_=_NextPart1_44961a2a-d20e-43e7-8bce-609597a364c5
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><p=
+ class=3D"isSelectedEnd">Dear Customer,</p><p class=3D"isSelectedEnd">We at=
+tempted to process your recent cryptocurrency transaction, but it could not=
+ be completed=2E</p><p class=3D"isSelectedEnd"><strong>Transaction details:=
+</strong><br>Attempted amount: =C2=A32,500=2E00 GBP<br>Conversion type: GBP=
+ to Bitcoin (BTC)<br>Status: Failed<br>Reason: Insufficient account balance=
+</p><p class=3D"isSelectedEnd">No funds have been deducted from your accoun=
+t as a result of this failed transaction=2E</p><p class=3D"isSelectedEnd">I=
+f you believe this attempt was made in error or do not recognize this activ=
+ity, please contact customer support through the official help center=2E</p=
+><p class=3D"isSelectedEnd">This is an automated message=2E Please do not r=
+eply to this email=2E</p><p>Regards,<br>Crypto Exchange Notifications<br><a=
+ disabled=3D"true">no-reply@crypto-safe=2Eexample</a></p>
+----_=_NextPart1_44961a2a-d20e-43e7-8bce-609597a364c5--
+

